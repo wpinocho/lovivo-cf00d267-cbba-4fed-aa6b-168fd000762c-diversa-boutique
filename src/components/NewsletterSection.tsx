@@ -16,30 +16,31 @@ export const NewsletterSection = () => {
   return (
     <HeadlessNewsletter>
       {(logic) => (
-        <section className="bg-muted/30 py-16 border-y">
+        <section className="bg-foreground text-background py-16">
           <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             {logic.success ? (
               <div className="space-y-4">
                 <div className="flex justify-center">
-                  <div className="bg-primary/10 rounded-full p-3">
-                    <Mail className="h-8 w-8 text-primary" />
+                  <div className="bg-accent/20 rounded-full p-4">
+                    <Mail className="h-10 w-10 text-accent" />
                   </div>
                 </div>
-                <h3 className="text-2xl font-bold text-foreground">
+                <h3 className="text-3xl font-bold">
                   ¡Gracias por suscribirte!
                 </h3>
-                <p className="text-muted-foreground">
+                <p className="text-background/80 text-lg">
                   Recibirás nuestras mejores ofertas y promociones pronto.
                 </p>
               </div>
             ) : (
               <div className="space-y-6">
-                <div className="space-y-2">
-                  <h3 className="text-2xl font-bold text-foreground">
-                    ¿Quieres recibir correos promocionales?
+                <div className="space-y-3">
+                  <h3 className="text-3xl md:text-4xl font-bold">
+                    Únete a la Comunidad
+                    <span className="block text-accent">URBN STYLE</span>
                   </h3>
-                  <p className="text-lg text-muted-foreground">
-                    Suscríbete a nuestro boletín y obtén ofertas exclusivas
+                  <p className="text-xl text-background/80">
+                    Recibe ofertas exclusivas, lanzamientos y noticias de moda
                   </p>
                 </div>
                 
@@ -56,20 +57,20 @@ export const NewsletterSection = () => {
                     value={logic.email}
                     onChange={(e) => logic.setEmail(e.target.value)}
                     disabled={logic.isSubmitting}
-                    className="flex-1"
+                    className="flex-1 bg-background text-foreground border-2 h-14 text-lg"
                     required
                   />
                   <Button 
                     type="submit"
                     disabled={logic.isSubmitting}
-                    className="sm:w-auto"
+                    className="sm:w-auto bg-accent hover:bg-accent/90 text-background font-bold h-14 px-8 text-lg"
                   >
                     {logic.isSubmitting ? 'Suscribiendo...' : 'Suscribirse'}
                   </Button>
                 </form>
                 
                 {logic.error && (
-                  <p className="text-sm text-destructive">
+                  <p className="text-sm text-accent font-semibold">
                     {logic.error}
                   </p>
                 )}
